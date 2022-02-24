@@ -2,7 +2,57 @@
 
 Este repositório é um compilado de odores e heuristicas retidos do livro **Clean Code** de **_Robert C. Martin_**.
 
-## Comentários
+- [Odores e Heuristícas](#odores-e-heuristícas)
+    - [C1: Informações inapropriadas](#c1-informações-inapropriadas)
+    - [C2: Comentário obsoleto](#c2-comentário-obsoleto)
+    - [C3: Comentários redundantes](#c3-comentários-redundantes)
+    - [C4: Comentário mal escrito](#c4-comentário-mal-escrito)
+    - [C5: Código como comentário](#c5-código-como-comentário)
+  - [Ambiente](#ambiente)
+    - [A1: Construir requer mais de uma etapa](#a1-construir-requer-mais-de-uma-etapa)
+    - [A2: Testes requerem mais de uma etapa](#a2-testes-requerem-mais-de-uma-etapa)
+  - [Funções](#funções)
+    - [F1: Parâmetros em excesso](#f1-parâmetros-em-excesso)
+    - [F2: Parâmetros de saída](#f2-parâmetros-de-saída)
+    - [F3: Parâmetros lógicos](#f3-parâmetros-lógicos)
+    - [F4: Função morta](#f4-função-morta)
+  - [Geral](#geral)
+    - [G1: Múltiplas linguagens em um arquivo fonte](#g1-múltiplas-linguagens-em-um-arquivo-fonte)
+    - [G2: Comportamento óbvio não implementado](#g2-comportamento-óbvio-não-implementado)
+    - [G3: Comportamento incorreto nos limites](#g3-comportamento-incorreto-nos-limites)
+    - [G4: Seguranças anuladas](#g4-seguranças-anuladas)
+    - [G5: Duplicação](#g5-duplicação)
+    - [G6: Códigos no nível errado de abstração](#g6-códigos-no-nível-errado-de-abstração)
+    - [G7: As classes base dependem de suas derivadas](#g7-as-classes-base-dependem-de-suas-derivadas)
+    - [G8: Informações excessivas](#g8-informações-excessivas)
+    - [G9: Código morto](#g9-código-morto)
+    - [G10: Separação vertical](#g10-separação-vertical)
+    - [G11: Inconsistência](#g11-inconsistência)
+    - [G12: Entulho](#g12-entulho)
+    - [G13: Acoplamento Artificial](#g13-acoplamento-artificial)
+    - [G14: Feature Envy](#g14-feature-envy)
+    - [G15: Parâmetros seletores](#g15-parâmetros-seletores)
+    - [G16: Propósito obscuro](#g16-propósito-obscuro)
+    - [G17: Responsabilidade mal posicionada](#g17-responsabilidade-mal-posicionada)
+    - [G18: Modo estático inadequado](#g18-modo-estático-inadequado)
+    - [G19: Use variáveis descritivas](#g19-use-variáveis-descritivas)
+    - [G20: Funções devem dizer o que elas fazem](#g20-funções-devem-dizer-o-que-elas-fazem)
+    - [G21: Entenda o Algoritmo](#g21-entenda-o-algoritmo)
+    - [G22: Torne dependências lógicas em físicas](#g22-torne-dependências-lógicas-em-físicas)
+    - [G23: Prefira polimorfismoa if/else ou switch/case](#g23-prefira-polimorfismoa-ifelse-ou-switchcase)
+    - [G24: Siga as convenções padrões](#g24-siga-as-convenções-padrões)
+    - [G25: Substitua os números mágicos por constantes com nome](#g25-substitua-os-números-mágicos-por-constantes-com-nome)
+    - [G26: Seja preciso](#g26-seja-preciso)
+    - [G27: Estrutura acima da convenção](#g27-estrutura-acima-da-convenção)
+    - [G28: Encapsule as condicionais](#g28-encapsule-as-condicionais)
+    - [G29: Evite condicionais negativas](#g29-evite-condicionais-negativas)
+    - [G30: Funções devem fazer uma coisa só](#g30-funções-devem-fazer-uma-coisa-só)
+    - [G31: Acoplamentos temporais ocultos](#g31-acoplamentos-temporais-ocultos)
+    - [G32: Não seja arbitrário](#g32-não-seja-arbitrário)
+    - [G33](#g33)
+    - [G34](#g34)
+    - [G35](#g35)
+    - [G36](#g36)
 
 ### C1: Informações inapropriadas
 
@@ -162,55 +212,271 @@ Essa regra também se aplica aos arquivos fonte, componentes e módulos. Um bom 
 
 ### G7: As classes base dependem de suas derivadas
 
-### G8
+A razão mais comum para separar os conceitos em classes base e derivadas é para que os conceitos de níveis mais altos das classes base possam ficar independentes dos conceitos de níveis mais baixos das classes derivadas. Portanto, quando virmos classes base mencionando os nomes de suas derivadas, suspeitaremos de um problema.
 
-### G9
+De modo geral, **as classes base não devem enxergar nada de suas derivadas**.
 
-### G10
+Essa regra possui excessões. De vez em quando o número de derivadas é fixado, e a classe base tem códigos que consultamsuas derivadas. Vemos isso em muitas implementações de máquinas com configuração finita. Porém, neste caso, as classes base e derivadas estão fortemente acopladas e são sempre implementadas juntas no mesmo arquivo jar. De modo geral, queremos poder implementar as classes base e derivadas em arquivos jar direfentes.
 
-### G11
+### G8: Informações excessivas
 
-### G12
+Módulos bem definidos possuem interfaces pequenas que lhe permite fazer muito com pouco. Já os mal definidos possuem interfaces grandes e longas que lhe obriga a usar muitas formas diferentes para efetuar coisas simples. Um interface bem definida não depende de muitas funções, portanto, há baixo acoplamento. E uma interface mal definida depende de diversas funções que devem ser chamadas, gerando alto acoplamento.
 
-### G13
+Quanto menos tiver uma classe, melhor.
+Quanto menos variáveis uma função usar, melhor.
+Quanto menos variáveis tiver uma classe, melhor.
+Esconda seus dados, funções utilitárias, constantes e variáveis temporárias.
+Não crie muitas variáveis e funções protegidas para suas subclasses.
+Concentre-se em manter as interfaces curtas e muito pequenas.
+Limite as informações para ajudar a manter um baixo acoplamento.
 
-### G14
+### G9: Código morto
 
-### G15
+Um código morto é aquele que nunca é executado. Seu problema é que após um tempo ele começa a se tornar desatualizado, não seguindo regras ou convenções, se tornando obsoleto entre código atualizado. Quando encontrar código morto exclua-o do sistema.
 
-### G16
+### G10: Separação vertical
 
-### G17
+Devem-se declarar as variáveis e funções próximas de onde são utilizadas.
+Deve-se declarar as variáveis locais imediatamente acima do seu primeiro uso, e o escopo deve ser vertical.
+Não queremos que variáveis locais sejam declaradas centenas de linhas afastadas de onde são utilizadas.
 
-### G18
+Devem-se declarar as funções privadas imediatamente abaixo de seu primeiro uso. Elas pertencem ao escolpo de toda a classe. Mesmo assim, ainda desejamos limitar a distância vertical entre as chamadas e as declarações. Encontrar uma função privadadeve ser uma questão de buscar para baixo a partir de seu primeiro uso.
 
-### G19
+### G11: Inconsistência
 
-### G20
+Se você fizer algo de uma maneira, faça da mesma forma todas as outras coisas similares. Atenção ao escolher suas convenções, uma vez escolhidas, siga-as.
 
-### G21
+### G12: Entulho
 
-### G22
+De que serve um construtor sem implementação alguma? Para entulhar o código com pedaços inúteis. Variáveis que não são usadas, funções que não são chamadas, comentários que não acrescentam informações e assim por diante, são todos entulhos e devem ser removidos.
 
-### G23
+### G13: Acoplamento Artificial
 
-### G24
+Coisas que não dependem uma da outro não devem ser acopladas artificialmente. Por exemplo, enuns genéricos não devem ficar dentro de classes mais específicas, pois isso obriga todo o aplicativo a enxergar mais essas classes. O mesmo vale para funções static de proposito geral, declaradas em classes específicas.
 
-### G25
+De modo geral, um acoplamento artificial é um acoplamento entre dois módulos que não possuem um propósito direto. Isso ocorre quando se coloca uma variável, uma constante ou uma funções em um local temporariamente conveniente, porém inapropriado. Isso é descuido e preguiça.
 
-### G26
+Tome seu tempo para descobrir onde devem ser declaradas as funções, as constantes e as variáveis. Não as jogue no local mais conveniente e fácil e as deixe lá.
 
-### G27
+### G14: Feature Envy
 
-### G28
+Os métodos de uma classe devem ficar interessados nas variáveis e funções da classe a qual eles pertencem, e não de outras classes. Quando um método usa métodos de acesso e de alteração de algum outro objeto para manipular dados dentro deste objeto, o método inveja o escopo da classe daquele outro objeto. Ele queria estar dentro daquela outra classe de modo que pudesse ter acesso direto às variáveis que está manipulando.
 
-### G29
+### G15: Parâmetros seletores
 
-### G30
+São parâmetros que definem certo comportamento que uma função deva adotar. De forma geral é uma forma preguiçosa de não ter que dividir uma função grande em outras menores.
 
-### G31
+Exemplo:
 
-### G32
+```ts
+export function calculatePayment(employee: Employee) {
+  if (employee.department === "IT") {
+    // do IT payment calcs
+  } else if (employee.department === "SomeDepartment") {
+    // do other payment cals
+  }
+}
+```
+
+Refatorando:
+
+```ts
+export function calculateITPayment(employee: Employee) {
+  // do IT payment calcs
+}
+
+export function calculateSomeOtherDepartmentPayment(
+  someOtherDepartmentEmployee: Employe
+) {
+  // do some other department calcs
+}
+```
+
+### G16: Propósito obscuro
+
+Queremos que o código seja o mais específico possível. Expressões contínuas, notação Húngara e números mágicos são elementos que obscurescem a intenção do autor.
+
+Example:
+
+```ts
+export function calculateShopcartPrice(shopcart: Shopcart): number {
+  const itensPrice = shopcart
+    .map((item) => {
+      return {
+        value: item.value * item.quantity,
+      };
+    })
+    .reduce((acc, value) => acc + value, 0);
+
+  return itensPrice + 25.0;
+}
+```
+
+Refactoring:
+
+```ts
+export function calculateShopcartPrice(shopcart: Shopcart): number {
+  const deliveryPrice = 25.0;
+  const itensPrice = shopcart
+    .map((item) => {
+      return {
+        value: item.value * item.quantity,
+      };
+    })
+    .reduce((acc, value) => acc + value, 0);
+
+  return itensPrice + deliveryPrice;
+}
+```
+
+### G17: Responsabilidade mal posicionada
+
+Onde colocar o código é uma das decisões mais importantes que um desenvolvedor de software deve fazer.
+
+Deve-se substituir o código onde um leitor geralmente espera. A constante PI deve ficar onde estão declaradas as funções de trigonometria, a constante OVERTIME_RATE deve ser declarada na classe HourlyPayCalculator e assim por diante.
+
+Um exercício para sabermos onde colocar determinado trecho de código é analisar o que este trecho faz e o nome do local que estamos colocando-o.
+
+### G18: Modo estático inadequado
+
+Em geral deve-se dar preferência a métodos não estáticos. Na dúvida, torne a função não estática. Se precisar de uma função estática verifique se não há a necessidade de futuramente precisar que ela se comporte de maneira polimórfica.
+
+### G19: Use variáveis descritivas
+
+Variáveis explicativas são melhores do que variáveis não explicativas. É impressionante como um módulo pode se tornar transparente simplesmente ao separar os cálculos em valores intermediários e bem nomeados.
+
+### G20: Funções devem dizer o que elas fazem
+
+Se você tiver de olhar a assinatura, ou documentação, de uma função para saber o que ela faz, é melhor selecionar um nome melhor ou reorganizar a funcionalidade de modo que esta possa ser colocada em funções com nomes melhores.
+
+O que esse código faz?
+
+```ts
+const date = new DateHandler();
+date.add(5);
+```
+
+Refatorando:
+
+```ts
+const date = new DateHandler();
+date.addDays(5);
+```
+
+### G21: Entenda o Algoritmo
+
+Antes de achar que já terminou uma função, certifique-se de que você entenda como ela funciona. Ter passado em todos os testes não basta. Você deve compreender que a solução está correta.
+
+Geralmente a melhor forma de obter esse conhecimento e entendimento é refatorar a função em algo que seja tão limpo e expressivo que fique óbvio que ela funcione.
+
+### G22: Torne dependências lógicas em físicas
+
+Se um módulo depende de outro, essa dependência deve ser física, e não apenas lógica. O módulo dependente não deve fazer suposições sobre o módulo no qual ele depende. Ao invés disso devemos explicitamente àquele módulo todas as informações das quais ele depende.
+
+### G23: Prefira polimorfismoa if/else ou switch/case
+
+Podem existir mais de uma estrutura switch para um dado tipo de seleção. Os casos nos quais o switch deve criar objetos polimórficos que substituam outras estruturas switch no resto do sistema.
+
+### G24: Siga as convenções padrões
+
+Cada equipe deve seguir um padrão de programação baseando-se nas normas comuns do mercado. A equipe não deve precisar de um documento que descreve essas convenções porque seus códigos fornecem os exemplos necessários.
+
+Cada membro da equipe deve seguir essas convençõe, isso significa que cada um deve ser maduro o suficiente para entender que não importa onde você coloque suas chaves contanto que todos concordem onde colocá-las.
+
+### G25: Substitua os números mágicos por constantes com nome
+
+Substitua nomes de variáveis que contenham valores sem contexto para nomes que indiquem o que tal valor significa.
+
+O que é esse valor 86400?
+
+```ts
+export function isBiggerThanADay(seconds: number): boolean {
+  if (seconds > 86400) {
+    return true;
+  }
+}
+```
+
+Refatorando:
+
+```ts
+export function isBiggerThanADay(seconds: number): boolean {
+  const oneDayInSeconds = 86400;
+  if (seconds > oneDayInSeconds) {
+    return true;
+  }
+}
+```
+
+### G26: Seja preciso
+
+quando você toma uma decisão em seu código, certifique-se de fazê-la precisamente. Saiba por que a tomou e como lidará com quaisquer excessões. Não seja desleixado com a precisão de suas decisões.
+
+Ambiguidades e imprecisão em código são resltado de desacordos e desleixos. Seja qual for o caso, elas devem ser eliminadas.
+
+### G27: Estrutura acima da convenção
+
+Insista para que as decisões do projeto sejam baseadas em estrutura acima da convenção. Convenções de nomenclatura são boas, mas inferiores as estruturas que forçam um certo cumprimento. Por exemplo, switch/cases com enumerações bem nomeadas são inferiores a classes base com métodos abstratos. Ninguém é obrigado a implementar a estrutura switch/case da mesma forma o tempo todo, mas as classes base obrigam a implementação de todos os métodos abstratos das classes concretas.
+
+### G28: Encapsule as condicionais
+
+A lógica booleana já é difícil o bastante de entender sem precisar vê-la no contexto de um if ou um while. Extraia funções que expliquem o propósito da estrutura condicional.
+
+Exemplo:
+
+```ts
+export function generateReceipt({ payd, date }: Purchase): Receipt {
+  if (!payd || date.greaterThan(30, "days")) {
+    throw new Error("Cannont generate Receipt");
+  }
+}
+```
+
+Refatorando
+
+```ts
+export function generateReceipt({ payd, date }: Purchase): Receipt {
+  const canGenerateReceipt = payd && date.lessThan(30, "days");
+
+  if (canGenerateReceipt)) {
+    // do the job
+  } else {
+    throw new Error("Cannont generate Receipt");
+  }
+```
+
+### G29: Evite condicionais negativas
+
+É um pouco mais complicado entender condicionais negativas do que afirmativas. Opte sempre por utilizar condicionais afirmativas.
+
+### G30: Funções devem fazer uma coisa só
+
+Funções que executam mais de uma tarefa devem ser refatoradas em funções menores, cada um com uma única responsabilidade.
+
+### G31: Acoplamentos temporais ocultos
+
+Acoplamentos temporais costumam ser necessários, mas você não deve ocultar o acoplamento. Organize os parâmetros de suas funções de modo que a ordem na qual são chamadas fique óbvia.
+
+Exemplo:
+
+```ts
+class MoogDiver {
+  private gradient: Gradient;
+  private splines: Splines[];
+
+  public void dive(reason: string): void {
+    this.gradient = saturateGradient();
+    this.splintes = reticulateSplines(this.gradient);
+    diveForMoog(splines, reason);
+  }
+}
+```
+
+Isso expõe o acoplamento temporário, ao ser necessário passar o valor anterior como parâmetro para o próximo passo.
+
+### G32: Não seja arbitrário
+
+Tenha um motivo para que você estruture seu código e certifique-se de que tal motivo seja infomado na estrutura. Se esta parece arbitrária, as outras pessoas se sentirão no direito de alterá-la. Mas se parece consistente por todo o sistema, as outras pessoas irão usá-la e preservar a convenção utilizada.
 
 ### G33
 
