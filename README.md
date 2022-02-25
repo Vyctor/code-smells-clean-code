@@ -3,6 +3,7 @@
 Este repositório é um compilado de odores e heuristicas retidos do livro **Clean Code** de **_Robert C. Martin_**.
 
 - [Odores e Heuristícas](#odores-e-heuristícas)
+  - [Comentários](#comentários)
     - [C1: Informações inapropriadas](#c1-informações-inapropriadas)
     - [C2: Comentário obsoleto](#c2-comentário-obsoleto)
     - [C3: Comentários redundantes](#c3-comentários-redundantes)
@@ -49,10 +50,12 @@ Este repositório é um compilado de odores e heuristicas retidos do livro **Cle
     - [G30: Funções devem fazer uma coisa só](#g30-funções-devem-fazer-uma-coisa-só)
     - [G31: Acoplamentos temporais ocultos](#g31-acoplamentos-temporais-ocultos)
     - [G32: Não seja arbitrário](#g32-não-seja-arbitrário)
-    - [G33](#g33)
-    - [G34](#g34)
-    - [G35](#g35)
-    - [G36](#g36)
+    - [G33: Encapsule as condições de limite](#g33-encapsule-as-condições-de-limite)
+    - [G34: Funções devem descer apenas um nível de abstração](#g34-funções-devem-descer-apenas-um-nível-de-abstração)
+    - [G35: Mantenha os dados configuráveis em níveis altos](#g35-mantenha-os-dados-configuráveis-em-níveis-altos)
+    - [G36: Evite a navegação transitiva](#g36-evite-a-navegação-transitiva)
+
+## Comentários
 
 ### C1: Informações inapropriadas
 
@@ -478,10 +481,38 @@ Isso expõe o acoplamento temporário, ao ser necessário passar o valor anterio
 
 Tenha um motivo para que você estruture seu código e certifique-se de que tal motivo seja infomado na estrutura. Se esta parece arbitrária, as outras pessoas se sentirão no direito de alterá-la. Mas se parece consistente por todo o sistema, as outras pessoas irão usá-la e preservar a convenção utilizada.
 
-### G33
+### G33: Encapsule as condições de limite
 
-### G34
+Condições de limite são difíceis de acompanhar. Coloque o processamento para elas em um único lugar. Não as deixe expalhadas pelo código.
+Não queremos um enxame de +1s e -1s aparecendo aqui e acolá.
 
-### G35
+Exemplo:
 
-### G36
+```ts
+if (level + 1 < tags.length) {
+  return 0;
+}
+```
+
+Refatorando:
+
+```ts
+const nextLevel = level + 1;
+
+if (nextLevel < tags.length) {
+  return 0;
+}
+```
+
+### G34: Funções devem descer apenas um nível de abstração
+
+As instruções de uma função devem ficar todas no mesmo nível de abstração, o qual deve ser um nível abaixo da operação descrita pelo nome da função. Isso pode ser o mais difícil dessas heurísticas para se interpretar e seguir, embora a idéia seja bastante simples.
+
+### G35: Mantenha os dados configuráveis em níveis altos
+
+Se você tiver uma constante, como um valor padrão ou de configuração, que seja conhecida e esperada em um nível alto de abstração, não a coloque numa função de nível baixo. Exponha a constrante como parâmetro para tal função, que será chamada por outra de nível mais alto.
+
+### G36: Evite a navegação transitiva
+
+De modo geral não queremos que um único módulo saiba muito sobre seus colaboradores. Mais especificamente, se A colabora com B e B colabora com C então não queremos que A colabore com C.
+Isso às vezes se chama lei Demeter. Os programadores pragmáticos chamam de **Criar um código tímido**. Em ambos os casos, resume-se a garantir que os módulos saibam sobre seus colaboradores apenas e não sobre o mapa de navegação de todo o sistema.
