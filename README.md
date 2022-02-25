@@ -54,6 +54,14 @@ Este repositório é um compilado de odores e heuristicas retidos do livro **Cle
     - [G34: Funções devem descer apenas um nível de abstração](#g34-funções-devem-descer-apenas-um-nível-de-abstração)
     - [G35: Mantenha os dados configuráveis em níveis altos](#g35-mantenha-os-dados-configuráveis-em-níveis-altos)
     - [G36: Evite a navegação transitiva](#g36-evite-a-navegação-transitiva)
+  - [Nomes](#nomes)
+    - [N1: Escolha nomes descritivos](#n1-escolha-nomes-descritivos)
+    - [N2: Escolha nomes no nível apropriado de abstração](#n2-escolha-nomes-no-nível-apropriado-de-abstração)
+    - [N3: Use uma nomenclatura padrão onde for possível](#n3-use-uma-nomenclatura-padrão-onde-for-possível)
+    - [N4: Nomes não ambíguos](#n4-nomes-não-ambíguos)
+    - [N5: Use nomes longos para escopos grandes](#n5-use-nomes-longos-para-escopos-grandes)
+    - [N6: Evite codificações](#n6-evite-codificações)
+    - [N7: Nomes devem descrever os efeitos colaterais](#n7-nomes-devem-descrever-os-efeitos-colaterais)
 
 ## Comentários
 
@@ -516,3 +524,36 @@ Se você tiver uma constante, como um valor padrão ou de configuração, que se
 
 De modo geral não queremos que um único módulo saiba muito sobre seus colaboradores. Mais especificamente, se A colabora com B e B colabora com C então não queremos que A colabore com C.
 Isso às vezes se chama lei Demeter. Os programadores pragmáticos chamam de **Criar um código tímido**. Em ambos os casos, resume-se a garantir que os módulos saibam sobre seus colaboradores apenas e não sobre o mapa de navegação de todo o sistema.
+
+## Nomes
+
+### N1: Escolha nomes descritivos
+
+Não se apresse ao escolher um nome. Certifique-se que ele seja descritivo, lembre-se que os sentidos tendem a se perder conforme o software evolui. Portanto, reavalie frequentemente a adequação dos nomes que você escolher.
+
+**Nomes são muito importantes para serem tratados de qualquer jeito**.
+
+### N2: Escolha nomes no nível apropriado de abstração
+
+Não escolha nomes que indiquem a implementação, mas nomes que reflitam o nível de abstração da classe ou função na qual você está trabalhando. Esse tarefa é ardua. Novamente, as pessoas são muito boas em misturar níveis de abstração, cada vez que você analisar seu código provavelmente encontrará alguma variável nomeada baseando-se em um nível muito baixo. Aproveite a chance para trocar esses nomes.
+
+### N3: Use uma nomenclatura padrão onde for possível
+
+Nomes são mais fáceis de entender se baseados numa convenção ou uso já existente. Por exemplo, se estiver usando o padrão DECORATOR, você deve usar a palavar Decorator nos nomes das classes que o usam.
+
+### N4: Nomes não ambíguos
+
+Escolha nomes que não deixem as tarefas de uma função ou variável ambíguas.
+
+### N5: Use nomes longos para escopos grandes
+
+O comprimento de um nome deve estar relacionado com o do escopo. Você pode usar nomes de variáveis muito curtos para escopos minúsculos. Mas para escopos grandes, devem-se usar nomes extensos.
+Nomes de variáveis como i e j são bons se seu escopo tiver cinco linhas apenas.
+
+### N6: Evite codificações
+
+Não se devem codificar nomes com informações sobre o tipo ou o escopo. Prefixos, como m\_ ou f, são inúteis. Mantenha seus nomes livres da poluição húngara.
+
+### N7: Nomes devem descrever os efeitos colaterais
+
+Nomes devem descrever tudo o que uma função, classe ou variável faz. Não oculte efeitos colaterais com um nome. Não use um simples verbo para descrever uma função que faça mais do que uma mera ação.
