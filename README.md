@@ -62,6 +62,16 @@ Este repositório é um compilado de odores e heuristicas retidos do livro **Cle
     - [N5: Use nomes longos para escopos grandes](#n5-use-nomes-longos-para-escopos-grandes)
     - [N6: Evite codificações](#n6-evite-codificações)
     - [N7: Nomes devem descrever os efeitos colaterais](#n7-nomes-devem-descrever-os-efeitos-colaterais)
+  - [Testes](#testes)
+  - [T1: Testes insuficientes](#t1-testes-insuficientes)
+  - [T2: Use uma ferramente de cobertura](#t2-use-uma-ferramente-de-cobertura)
+  - [T3: Não pule testes triviais](#t3-não-pule-testes-triviais)
+  - [T4: Um teste ignorado é uma questão sobre ambiguidade](#t4-um-teste-ignorado-é-uma-questão-sobre-ambiguidade)
+  - [T5: Teste as condições de limites](#t5-teste-as-condições-de-limites)
+  - [T6: Teste abundantemente bugs próximos](#t6-teste-abundantemente-bugs-próximos)
+  - [T7: Padrões de falhas são reveladores](#t7-padrões-de-falhas-são-reveladores)
+  - [T8: Padrões de cobertura de testes podem ser reveladores](#t8-padrões-de-cobertura-de-testes-podem-ser-reveladores)
+  - [T9: Testes devem ser rápidos](#t9-testes-devem-ser-rápidos)
 
 ## Comentários
 
@@ -557,3 +567,41 @@ Não se devem codificar nomes com informações sobre o tipo ou o escopo. Prefix
 ### N7: Nomes devem descrever os efeitos colaterais
 
 Nomes devem descrever tudo o que uma função, classe ou variável faz. Não oculte efeitos colaterais com um nome. Não use um simples verbo para descrever uma função que faça mais do que uma mera ação.
+
+## Testes
+
+## T1: Testes insuficientes
+
+Uma coleção de testes deve testar tudo que pode vir a falhar. Os testes são insuficientes quando houver condições que não tenham sido exploradas pelos testes ou cálculos que não tenham sido validados.
+
+## T2: Use uma ferramente de cobertura
+
+Ferramentas de cobertura informam lacunas em sua estratégia de testes. Elas facilitam o encontro de módulos, classes e funções que são testados de modo insuficiente.
+
+## T3: Não pule testes triviais
+
+Eles são fáceis de escrever e seu valor de documentação é maior que o custo de produção.
+
+## T4: Um teste ignorado é uma questão sobre ambiguidade
+
+As vezes não estamos certos sobre um detalhe de comportamento devido a falta de clareza dos requisitos. Podemos expressar nossa questão sobre os requisitos como um teste que é posto como comentário que é anotado com um @Ignore. O que você escolher dependerá se a ambiguida é sobre algo que compilará ou não.
+
+## T5: Teste as condições de limites
+
+Dê atenção especial aos testes de condições de limites. Geralmente, entendemos a parte central de um algoritmo, mas erramos sobre seus limites.
+
+## T6: Teste abundantemente bugs próximos
+
+Bugs tendem a se reunir. Quando encontrar um bug numa função é sábio fazer um teste exaustivo nela. Provavelmente você verá que o bug não estava só.
+
+## T7: Padrões de falhas são reveladores
+
+De vez em quando você pode diagnosticar um problema ao encontrar padrões na forma pela qual os casos de teste falharam. Esse é outro argumento para tornar os casos de teste os mais completos possíveis. Eles, quando ordenados de uma maneira lógica expõem os padrões.
+
+## T8: Padrões de cobertura de testes podem ser reveladores
+
+Analisar o código que é ou não executado pelos testes efetuados dá dicas do porquê de os testes que falharam estão falhando.
+
+## T9: Testes devem ser rápidos
+
+Um teste lento é um que não será rodado. Quando as coisas ficam apertadas, são os testes lentos que serão descartados da coleção, portanto, faça o que puder para manter seus testes rápidos.
