@@ -1,6 +1,6 @@
 # Odores e Heuristícas
 
-Este repositório é um compilado de odores e heuristicas retidos do livro **Clean Code** de **_Robert C. Martin_**.
+Este repositório é um compilado de odores e heuristicas retirados do livro **Clean Code** de **_Robert C. Martin_**.
 
 - [Odores e Heuristícas](#odores-e-heuristícas)
   - [Comentários](#comentários)
